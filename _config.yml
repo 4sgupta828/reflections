@@ -5,3 +5,13 @@ baseurl: "/reflections"
 theme: minima
 plugins:
   - jekyll-feed
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      comments: true
+utterances:
+  repo: "4sgupta828/reflections"
+  issue_term: "pathname"
+  theme: "github-light"
