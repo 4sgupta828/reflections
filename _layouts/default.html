@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f6f2ea;
+      --paper: #fffdf8;
+      --ink: #1d1a16;
+      --muted: #6a645b;
+      --line: #ddd3c7;
+      --accent: #125c4d;
+      --accent-soft: #e4f0ec;
+      --accent-strong: #0d4438;
+      --shadow: 0 18px 48px rgba(29, 26, 22, 0.08);
+      --radius: 18px;
+      --content-width: 760px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(18, 92, 77, 0.08), transparent 28%),
+        linear-gradient(180deg, #f8f4ed 0%, var(--bg) 100%);
+      color: var(--ink);
+      font-family: "IBM Plex Sans", sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .site-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      padding: 24px 0 10px;
+    }
+
+    .site-header .wrap,
+    .footer-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-mark {
+      font-family: "Literata", serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .brand-tagline {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 38rem;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-weight: 600;
+    }
+
+    .site-nav a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--ink);
+    }
+
+    .site-nav a:hover {
+      background: rgba(18, 92, 77, 0.08);
+      text-decoration: none;
+    }
+
+    .page-main {
+      flex: 1;
+      padding: 20px 0 64px;
+    }
+
+    .surface {
+      background: var(--paper);
+      border: 1px solid rgba(221, 211, 199, 0.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(28px, 5vw, 56px);
+    }
+
+    .content-narrow {
+      max-width: var(--content-width);
+      margin: 0 auto;
+    }
+
+    .page-title,
+    .post-title {
+      font-family: "Literata", serif;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin: 0 0 14px;
+    }
+
+    .page-intro,
+    .post-intro,
+    .post-meta,
+    .page-meta {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .post-meta,
+    .page-meta {
+      margin-bottom: 18px;
+    }
+
+    .social-strip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 18px 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .social-label {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .social-strip a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .social-strip a:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      text-decoration: none;
+    }
+
+    .post-content,
+    .page-content {
+      font-size: 1.07rem;
+    }
+
+    .post-content > *:first-child,
+    .page-content > *:first-child {
+      margin-top: 0;
+    }
+
+    .post-content h2,
+    .page-content h2,
+    .post-content h3,
+    .page-content h3 {
+      font-family: "Literata", serif;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-top: 2.2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .post-content p,
+    .page-content p,
+    .post-content ul,
+    .page-content ul,
+    .post-content ol,
+    .page-content ol,
+    .post-content blockquote,
+    .page-content blockquote {
+      margin-bottom: 1rem;
+    }
+
+    .post-content blockquote,
+    .page-content blockquote {
+      margin-left: 0;
+      padding: 12px 18px;
+      border-left: 4px solid var(--accent);
+      background: var(--accent-soft);
+      border-radius: 0 12px 12px 0;
+    }
+
+    .post-list {
+      list-style: none;
+      padding: 0;
+      margin: 28px 0 0;
+      display: grid;
+      gap: 18px;
+    }
+
+    .post-card {
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #fff 0%, #fffaf3 100%);
+    }
+
+    .post-card h2 {
+      margin: 0 0 8px;
+      font-size: 1.45rem;
+      font-family: "Literata", serif;
+    }
+
+    .post-card time {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .post-card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+
+    .post-comments {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .site-footer {
+      padding: 18px 0 36px;
+    }
+
+    .footer-grid {
+      padding: 24px 0 0;
+      border-top: 1px solid rgba(221, 211, 199, 0.9);
+    }
+
+    .footer-note {
+      color: var(--muted);
+      max-width: 42rem;
+      font-size: 0.96rem;
+    }
+
+    @media (max-width: 700px) {
+      .site-header {
+        padding-top: 18px;
+      }
+
+      .wrap {
+        width: min(100%, calc(100% - 20px));
+      }
+
+      .surface {
+        padding: 24px 18px;
+        border-radius: 14px;
+      }
+
+      .site-nav a,
+      .social-strip a {
+        padding: 8px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <div class="wrap">
+        <div class="brand">
+          <a class="brand-mark" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+          <div class="brand-tagline">{{ site.tagline }}</div>
+        </div>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="{{ '/' | relative_url }}">Blog</a>
+          <a href="{{ '/about/' | relative_url }}">About</a>
+          {% include follow_links.html %}
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <div class="wrap">
+        <div class="surface">
+          {{ content }}
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div class="footer-note">
+          Thoughtful notes on agentic system design, production AI systems, and the engineering work required to make non-deterministic software reliable.
+        </div>
+        {% include follow_links.html %}
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

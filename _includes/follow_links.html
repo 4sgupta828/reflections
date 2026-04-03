@@ -1,0 +1,17 @@
+{% assign x_url = site.social.x_url | default: "" %}
+{% assign linkedin_url = site.social.linkedin_url | default: "" %}
+{% assign has_social = false %}
+{% if x_url != "" or linkedin_url != "" %}
+  {% assign has_social = true %}
+{% endif %}
+{% if has_social %}
+  <div class="social-strip">
+    <span class="social-label">Follow me on</span>
+    {% if x_url != "" %}
+      <a href="{{ x_url }}" target="_blank" rel="noopener noreferrer">X</a>
+    {% endif %}
+    {% if linkedin_url != "" %}
+      <a href="{{ linkedin_url }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    {% endif %}
+  </div>
+{% endif %}

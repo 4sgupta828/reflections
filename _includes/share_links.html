@@ -1,0 +1,8 @@
+{% assign share_url = page.url | absolute_url | uri_escape %}
+{% assign share_title = page.title | default: site.title | uri_escape %}
+<div class="social-strip">
+  <span class="social-label">Share on</span>
+  <a href="https://twitter.com/intent/tweet?url={{ share_url }}&text={{ share_title }}" target="_blank" rel="noopener noreferrer">X</a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ share_url }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  <a href="https://www.reddit.com/submit?url={{ share_url }}&title={{ share_title }}" target="_blank" rel="noopener noreferrer">Reddit</a>
+</div>

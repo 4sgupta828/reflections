@@ -3,6 +3,9 @@ description: Notes and essays
 url: "https://4sgupta828.github.io"
 baseurl: "/reflections"
 theme: minima
+author:
+  name: "Sandeep Gupta"
+tagline: "Writing about agentic system design, reliability, and production AI systems."
 plugins:
   - jekyll-feed
 defaults:
@@ -15,3 +18,6 @@ utterances:
   repo: "4sgupta828/reflections"
   issue_term: "pathname"
   theme: "github-light"
+social:
+  x_url: ""
+  linkedin_url: ""
