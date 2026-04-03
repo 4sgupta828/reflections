@@ -7,25 +7,20 @@
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f7f5f0;
-      --bg2: #edeae3;
-      --bg3: #e3dfd7;
+      --bg: #f7f7f8;
       --paper: #ffffff;
-      --ink: #18160f;
-      --ink2: #3d3a30;
-      --ink3: #6b6659;
-      --line: #d4cfc6;
-      --line2: #c0bab0;
-      --accent: #007a4d;
-      --accent-soft: #d6f0e6;
-      --accent-strong: #00573a;
-      --header-ink: #0f0e09;
-      --hero-muted: #b0ad9f;
-      --shadow: 0 22px 64px rgba(24, 22, 15, 0.08);
-      --radius: 22px;
+      --ink: #16181d;
+      --ink2: #2a2f38;
+      --ink3: #5f6876;
+      --line: #e5e7eb;
+      --accent: #0f766e;
+      --accent-soft: #ecfeff;
+      --accent-strong: #115e59;
+      --shadow: 0 1px 2px rgba(22, 24, 29, 0.04);
+      --radius: 12px;
       --content-width: 760px;
     }
 
@@ -35,12 +30,10 @@
 
     body {
       margin: 0;
-      background:
-        radial-gradient(circle at top left, rgba(0, 122, 77, 0.08), transparent 28%),
-        linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%);
+      background: var(--bg);
       color: var(--ink2);
       font-family: "Inter", sans-serif;
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
     a {
@@ -62,7 +55,9 @@
     }
 
     .site-header {
-      padding: 24px 0 12px;
+      padding: 20px 0 0;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
     }
 
     .site-header .wrap,
@@ -81,16 +76,15 @@
     }
 
     .brand-mark {
-      font-family: "Playfair Display", serif;
-      font-size: 1.45rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       color: var(--ink);
     }
 
     .brand-tagline {
       color: var(--ink3);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       max-width: 38rem;
     }
 
@@ -99,26 +93,24 @@
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      font-size: 0.95rem;
+      font-weight: 500;
     }
 
     .site-nav a {
-      padding: 8px 12px;
-      border-radius: 999px;
-      color: var(--ink);
+      padding: 8px 0;
+      border-radius: 0;
+      color: var(--ink2);
     }
 
     .site-nav a:hover {
-      background: rgba(0, 122, 77, 0.08);
-      text-decoration: none;
+      background: transparent;
+      color: var(--accent-strong);
     }
 
     .page-main {
       flex: 1;
-      padding: 18px 0 64px;
+      padding: 28px 0 56px;
     }
 
     .surface {
@@ -131,17 +123,10 @@
 
     .page-shell {
       background: var(--paper);
-      border: 1px solid rgba(212, 207, 198, 0.9);
+      border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: clamp(28px, 5vw, 56px);
-    }
-
-    .page-shell--post {
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-      padding: 0;
+      padding: clamp(24px, 4vw, 40px);
     }
 
     .content-narrow {
@@ -151,11 +136,10 @@
 
     .page-title,
     .post-title {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(2rem, 5vw, 3.6rem);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin: 0 0 14px;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin: 0 0 10px;
       color: var(--ink);
     }
 
@@ -169,13 +153,13 @@
 
     .post-meta,
     .page-meta {
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .social-strip {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
       margin: 0;
     }
@@ -184,11 +168,11 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.72);
+      background: var(--paper);
       color: var(--ink);
       transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
     }
@@ -201,14 +185,14 @@
     }
 
     .icon-link svg {
-      width: 18px;
-      height: 18px;
+      width: 15px;
+      height: 15px;
       fill: currentColor;
     }
 
     .post-content,
     .page-content {
-      font-size: 1.07rem;
+      font-size: 1rem;
       color: var(--ink2);
     }
 
@@ -221,12 +205,21 @@
     .page-content h2,
     .post-content h3,
     .page-content h3 {
-      font-family: "Playfair Display", serif;
-      line-height: 1.2;
+      line-height: 1.25;
       letter-spacing: -0.02em;
-      margin-top: 2.2rem;
+      margin-top: 2rem;
       margin-bottom: 0.75rem;
       color: var(--ink);
+    }
+
+    .post-content h2,
+    .page-content h2 {
+      font-size: 1.45rem;
+    }
+
+    .post-content h3,
+    .page-content h3 {
+      font-size: 1.15rem;
     }
 
     .post-content p,
@@ -251,94 +244,27 @@
 
     .page-header,
     .post-header {
-      margin-bottom: 28px;
+      margin-bottom: 22px;
     }
 
-    .post-hero {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(28px, 5vw, 44px);
-      border-radius: 20px;
-      background: var(--header-ink);
-      border-bottom: 3px solid var(--accent);
-      color: #fff;
-      margin-bottom: 28px;
+    .post-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
-    .post-hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 60% at 20% 50%, rgba(0,122,77,0.18) 0%, transparent 65%),
-        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(0,87,168,0.15) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .post-hero > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .post-kicker {
-      display: inline-block;
-      margin-bottom: 20px;
-      padding: 5px 12px;
-      border-radius: 4px;
-      border: 1px solid rgba(126, 255, 201, 0.35);
-      color: #7effc9;
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    .post-hero .post-title {
-      color: #fff;
-      margin-bottom: 18px;
-      font-size: clamp(2.4rem, 6vw, 4.4rem);
-    }
-
-    .post-hero .post-meta {
-      color: var(--hero-muted);
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.82rem;
-      margin-bottom: 20px;
-    }
-
-    .post-hero .icon-link {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.18);
-      color: #fff;
-    }
-
-    .post-hero .icon-link:hover {
-      background: rgba(126, 255, 201, 0.16);
-      border-color: rgba(126, 255, 201, 0.45);
-    }
-
+    .post-header-row,
     .post-actions {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
-      margin-top: 22px;
-    }
-
-    .post-actions-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
     }
 
     .post-body {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      padding: clamp(26px, 4vw, 44px);
+      padding: 0;
     }
 
     .post-list {
@@ -350,21 +276,20 @@
     }
 
     .post-card {
-      padding: 20px 22px;
+      padding: 18px 20px;
       border: 1px solid var(--line);
-      border-radius: 16px;
-      background: linear-gradient(180deg, #fff 0%, #fbf8f2 100%);
+      border-radius: 10px;
+      background: var(--paper);
     }
 
     .post-card h2 {
       margin: 0 0 8px;
-      font-size: 1.45rem;
-      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
     }
 
     .post-card time {
       color: var(--ink3);
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-family: "JetBrains Mono", monospace;
     }
 
@@ -374,29 +299,29 @@
     }
 
     .post-comments {
-      margin-top: 40px;
-      padding-top: 24px;
+      margin-top: 28px;
+      padding-top: 20px;
       border-top: 1px solid var(--line);
     }
 
     .site-footer {
-      padding: 18px 0 36px;
+      padding: 0 0 28px;
     }
 
     .footer-grid {
-      padding: 24px 0 0;
-      border-top: 1px solid rgba(221, 211, 199, 0.9);
+      padding: 16px 0 0;
+      border-top: 1px solid var(--line);
     }
 
     .footer-note {
       color: var(--ink3);
       max-width: 42rem;
-      font-size: 0.96rem;
+      font-size: 0.9rem;
     }
 
     @media (max-width: 700px) {
       .site-header {
-        padding-top: 18px;
+        padding-top: 16px;
       }
 
       .wrap {
@@ -407,21 +332,17 @@
         padding: 0;
       }
 
-      .page-shell,
-      .post-body {
-        padding: 22px 18px;
-        border-radius: 16px;
-      }
-
-      .post-hero {
-        padding: 22px 18px;
-        border-radius: 16px;
+      .page-shell {
+        padding: 20px 16px;
+        border-radius: 10px;
       }
 
       .site-nav a {
-        padding: 8px 10px;
+        padding: 6px 0;
       }
 
+      .site-header .wrap,
+      .footer-grid,
       .post-actions {
         align-items: flex-start;
         flex-direction: column;
@@ -448,7 +369,7 @@
     <main class="page-main">
       <div class="wrap">
         <div class="surface">
-          <div class="page-shell{% if page.layout == 'post' %} page-shell--post{% endif %}">
+          <div class="page-shell">
             {{ content }}
           </div>
         </div>
