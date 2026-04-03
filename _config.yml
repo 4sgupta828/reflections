@@ -1,0 +1,7 @@
+title: Reflections
+description: Notes and essays
+url: "https://4sgupta828.github.io"
+baseurl: "/reflections"
+theme: minima
+plugins:
+  - jekyll-feed
