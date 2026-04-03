@@ -156,6 +156,12 @@
       margin-bottom: 14px;
     }
 
+    .post-meta {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
     .social-strip {
       display: flex;
       align-items: center;
@@ -254,6 +260,27 @@
       flex-wrap: wrap;
     }
 
+    .post-actions-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .post-actions-label {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      color: var(--ink3);
+      white-space: nowrap;
+    }
+
+    .post-actions-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
     .post-header-row,
     .post-actions {
       display: flex;
@@ -346,6 +373,10 @@
       .post-actions {
         align-items: flex-start;
         flex-direction: column;
+      }
+
+      .post-actions-stack {
+        align-items: flex-start;
       }
     }
   </style>

@@ -7,8 +7,9 @@ layout: default
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
     <div class="post-header-row">
       <p class="post-meta">
+        Published
         <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-          {{ page.date | date: site.minima.date_format | default: "%b %-d, %Y" }}
+          {{ page.date | date: "%B %-d, %Y" }}
         </time>
         {%- if page.author -%}
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -16,9 +17,15 @@ layout: default
           </span>
         {%- endif -%}
       </p>
-      <div class="post-actions-group" aria-label="Follow and share links">
-        {% include follow_links.html %}
-        {% include share_links.html %}
+      <div class="post-actions-stack">
+        <div class="post-actions-row">
+          <span class="post-actions-label">Follow me on</span>
+          {% include follow_links.html %}
+        </div>
+        <div class="post-actions-row">
+          <span class="post-actions-label">Share on:</span>
+          {% include share_links.html %}
+        </div>
       </div>
     </div>
   </header>
@@ -29,7 +36,8 @@ layout: default
     </div>
 
     <div class="post-actions">
-      <div class="post-actions-group" aria-label="Share links">
+      <div class="post-actions-row" aria-label="Share links">
+        <span class="post-actions-label">Share on:</span>
         {% include share_links.html %}
       </div>
     </div>
