@@ -8,16 +8,14 @@ description: A short note on the systems thinking behind this blog.
 <div class="about-profile">
   <img src="{{ '/Sandeep.jpeg' | relative_url }}" alt="Sandeep Gupta" />
   <div class="about-profile-copy">
-    <p><strong>Sandeep Gupta</strong> writes about agentic system design, observability, reliability, and the engineering needed to make AI systems work in production.</p>
+    <p><strong>Sandeep Gupta</strong> writes about agentic system design, observability, reliability, and production AI systems.</p>
   </div>
 </div>
 
-I write about **agentic system design** with a bias toward production reality.
+I write about **agentic system design** with a production-first lens.
 
-What interests me most is the gap between a model that looks impressive in isolation and a system that can be trusted inside a messy, changing distributed environment. That gap is where state, uncertainty, observability, tooling, policy, and human judgment all start to matter more than a single prompt or model benchmark.
+I am most interested in the gap between a model that looks strong in isolation and a system that can be trusted in a messy, changing distributed environment. That is where state, uncertainty, observability, tooling, and policy matter more than a single prompt or benchmark.
 
-Over the years, I have worked on large-scale platforms where that kind of systems thinking was not optional. At Tubi, I helped shape the machine learning infrastructure behind real-time personalization for more than 100 million users. At Argo AI, I worked on data systems handling petabyte-scale autonomous vehicle workloads. At Netflix, I built production infrastructure for content and data pipelines operating at trillions of events per day, with deep debugging automation as a first-class requirement. Earlier at Microsoft, I worked on highly observable backend systems serving hundreds of millions of users.
+I have worked on large-scale platforms at Tubi, Argo AI, Netflix, and Microsoft, building the infrastructure and debugging systems behind personalization, autonomous vehicle data, and high-scale backend platforms.
 
-Across those environments, the pattern has been consistent: once software becomes distributed, adaptive, and partially non-deterministic, reliability depends less on isolated components and more on how the whole system can be inspected, explained, and improved. That is the lens behind this blog.
-
-Lately, that lens has narrowed even further toward agentic systems. I am interested in the engineering needed to turn AI workflows into **causal execution graphs** you can reason about, monitor, debug, and evolve safely over time.
+This blog is where I think through the engineering needed to make non-deterministic systems inspectable, debuggable, and reliable over time, especially when AI workflows need to behave like **causal execution graphs** rather than opaque chains of calls.
