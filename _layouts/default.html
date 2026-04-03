@@ -234,9 +234,62 @@
     .page-content ul,
     .post-content ol,
     .page-content ol,
+    .post-content table,
+    .page-content table,
     .post-content blockquote,
     .page-content blockquote {
       margin-bottom: 1rem;
+    }
+
+    .post-content table,
+    .page-content table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      line-height: 1.45;
+      white-space: normal;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+
+    .post-content th,
+    .page-content th,
+    .post-content td,
+    .page-content td {
+      min-width: 180px;
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+    }
+
+    .post-content th,
+    .page-content th {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ink);
+      background: #f9fafb;
+    }
+
+    .post-content td,
+    .page-content td {
+      color: var(--ink2);
+    }
+
+    .post-content tr:last-child td,
+    .page-content tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .post-content th:last-child,
+    .page-content th:last-child,
+    .post-content td:last-child,
+    .page-content td:last-child {
+      border-right: 0;
     }
 
     .post-content blockquote,
