@@ -1,8 +1,19 @@
 {% assign share_url = page.url | absolute_url | uri_escape %}
 {% assign share_title = page.title | default: site.title | uri_escape %}
-<div class="social-strip">
-  <span class="social-label">Share on</span>
-  <a href="https://twitter.com/intent/tweet?url={{ share_url }}&text={{ share_title }}" target="_blank" rel="noopener noreferrer">X</a>
-  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ share_url }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-  <a href="https://www.reddit.com/submit?url={{ share_url }}&title={{ share_title }}" target="_blank" rel="noopener noreferrer">Reddit</a>
+<div class="social-strip social-strip--icons" aria-label="Share links">
+  <a class="icon-link" href="https://twitter.com/intent/tweet?url={{ share_url }}&text={{ share_title }}" target="_blank" rel="noopener noreferrer" aria-label="Share on X" title="Share on X">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.847h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.153h7.594l5.243 6.932zM17.604 20.635h2.039L6.486 3.249H4.298z"></path>
+    </svg>
+  </a>
+  <a class="icon-link" href="https://www.linkedin.com/sharing/share-offsite/?url={{ share_url }}" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn" title="Share on LinkedIn">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.447 20.452H16.89V14.87c0-1.331-.028-3.044-1.854-3.044-1.854 0-2.138 1.448-2.138 2.947v5.679H9.342V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.604 0 4.271 2.372 4.271 5.456zM5.337 7.433a2.063 2.063 0 1 1 0-4.126 2.063 2.063 0 0 1 0 4.126zM7.119 20.452H3.555V9h3.564z"></path>
+    </svg>
+  </a>
+  <a class="icon-link" href="https://www.reddit.com/submit?url={{ share_url }}&title={{ share_title }}" target="_blank" rel="noopener noreferrer" aria-label="Share on Reddit" title="Share on Reddit">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M14.464 19.255c.47.47 1.23.47 1.7 0 .47-.47.47-1.23 0-1.7-.47-.47-1.23-.47-1.7 0-.47.47-.47 1.23 0 1.7zm-4.928-1.7c-.47.47-.47 1.23 0 1.7.47.47 1.23.47 1.7 0 .47-.47.47-1.23 0-1.7-.47-.47-1.23-.47-1.7 0zM20.928 11.7c.017-.148.027-.297.027-.45 0-1.308-1.06-2.368-2.368-2.368-.83 0-1.556.428-1.98 1.074-1.54-1.04-3.62-1.694-5.906-1.77l1.0-3.173 2.705.634c.0 1.058.857 1.915 1.915 1.915s1.915-.857 1.915-1.915-.857-1.915-1.915-1.915c-.754 0-1.406.436-1.718 1.068l-3.0-.703a.6.6 0 0 0-.714.398l-1.23 3.893c-2.38.04-4.547.69-6.144 1.756-.424-.626-1.14-1.038-1.953-1.038C1.06 8.882 0 9.942 0 11.25c0 .167.017.33.05.487C.018 11.97 0 12.218 0 12.468c0 3.78 4.39 6.857 9.795 6.857 5.41 0 9.795-3.077 9.795-6.857 0-.261-.02-.518-.062-.768zM9.795 17.91c-2.335 0-4.4-.51-5.827-1.33a.6.6 0 0 1 .6-1.04c1.246.717 3.094 1.17 5.227 1.17 2.132 0 3.98-.453 5.227-1.17a.6.6 0 1 1 .6 1.04c-1.427.82-3.492 1.33-5.827 1.33z"></path>
+    </svg>
+  </a>
 </div>

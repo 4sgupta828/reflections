@@ -5,13 +5,20 @@
   {% assign has_social = true %}
 {% endif %}
 {% if has_social %}
-  <div class="social-strip">
-    <span class="social-label">Follow me on</span>
+  <div class="social-strip social-strip--icons" aria-label="Follow links">
     {% if x_url != "" %}
-      <a href="{{ x_url }}" target="_blank" rel="noopener noreferrer">X</a>
+      <a class="icon-link" href="{{ x_url }}" target="_blank" rel="noopener noreferrer" aria-label="Follow on X" title="Follow on X">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.847h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.153h7.594l5.243 6.932zM17.604 20.635h2.039L6.486 3.249H4.298z"></path>
+        </svg>
+      </a>
     {% endif %}
     {% if linkedin_url != "" %}
-      <a href="{{ linkedin_url }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="icon-link" href="{{ linkedin_url }}" target="_blank" rel="noopener noreferrer" aria-label="Follow on LinkedIn" title="Follow on LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.447 20.452H16.89V14.87c0-1.331-.028-3.044-1.854-3.044-1.854 0-2.138 1.448-2.138 2.947v5.679H9.342V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.604 0 4.271 2.372 4.271 5.456zM5.337 7.433a2.063 2.063 0 1 1 0-4.126 2.063 2.063 0 0 1 0 4.126zM7.119 20.452H3.555V9h3.564z"></path>
+        </svg>
+      </a>
     {% endif %}
   </div>
 {% endif %}

@@ -7,19 +7,25 @@
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f6f2ea;
-      --paper: #fffdf8;
-      --ink: #1d1a16;
-      --muted: #6a645b;
-      --line: #ddd3c7;
-      --accent: #125c4d;
-      --accent-soft: #e4f0ec;
-      --accent-strong: #0d4438;
-      --shadow: 0 18px 48px rgba(29, 26, 22, 0.08);
-      --radius: 18px;
+      --bg: #f7f5f0;
+      --bg2: #edeae3;
+      --bg3: #e3dfd7;
+      --paper: #ffffff;
+      --ink: #18160f;
+      --ink2: #3d3a30;
+      --ink3: #6b6659;
+      --line: #d4cfc6;
+      --line2: #c0bab0;
+      --accent: #007a4d;
+      --accent-soft: #d6f0e6;
+      --accent-strong: #00573a;
+      --header-ink: #0f0e09;
+      --hero-muted: #b0ad9f;
+      --shadow: 0 22px 64px rgba(24, 22, 15, 0.08);
+      --radius: 22px;
       --content-width: 760px;
     }
 
@@ -30,10 +36,10 @@
     body {
       margin: 0;
       background:
-        radial-gradient(circle at top left, rgba(18, 92, 77, 0.08), transparent 28%),
-        linear-gradient(180deg, #f8f4ed 0%, var(--bg) 100%);
-      color: var(--ink);
-      font-family: "IBM Plex Sans", sans-serif;
+        radial-gradient(circle at top left, rgba(0, 122, 77, 0.08), transparent 28%),
+        linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%);
+      color: var(--ink2);
+      font-family: "Inter", sans-serif;
       line-height: 1.7;
     }
 
@@ -56,7 +62,7 @@
     }
 
     .site-header {
-      padding: 24px 0 10px;
+      padding: 24px 0 12px;
     }
 
     .site-header .wrap,
@@ -75,7 +81,7 @@
     }
 
     .brand-mark {
-      font-family: "Literata", serif;
+      font-family: "Playfair Display", serif;
       font-size: 1.45rem;
       font-weight: 700;
       letter-spacing: -0.02em;
@@ -83,7 +89,7 @@
     }
 
     .brand-tagline {
-      color: var(--muted);
+      color: var(--ink3);
       font-size: 0.95rem;
       max-width: 38rem;
     }
@@ -91,33 +97,51 @@
     .site-nav {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
-      font-weight: 600;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
     .site-nav a {
-      padding: 10px 14px;
+      padding: 8px 12px;
       border-radius: 999px;
       color: var(--ink);
     }
 
     .site-nav a:hover {
-      background: rgba(18, 92, 77, 0.08);
+      background: rgba(0, 122, 77, 0.08);
       text-decoration: none;
     }
 
     .page-main {
       flex: 1;
-      padding: 20px 0 64px;
+      padding: 18px 0 64px;
     }
 
     .surface {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    .page-shell {
       background: var(--paper);
-      border: 1px solid rgba(221, 211, 199, 0.9);
+      border: 1px solid rgba(212, 207, 198, 0.9);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: clamp(28px, 5vw, 56px);
+    }
+
+    .page-shell--post {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      padding: 0;
     }
 
     .content-narrow {
@@ -127,18 +151,19 @@
 
     .page-title,
     .post-title {
-      font-family: "Literata", serif;
+      font-family: "Playfair Display", serif;
       font-size: clamp(2rem, 5vw, 3.6rem);
       line-height: 1.08;
       letter-spacing: -0.03em;
       margin: 0 0 14px;
+      color: var(--ink);
     }
 
     .page-intro,
     .post-intro,
     .post-meta,
     .page-meta {
-      color: var(--muted);
+      color: var(--ink3);
       font-size: 1rem;
     }
 
@@ -150,39 +175,41 @@
     .social-strip {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin: 18px 0;
-      color: var(--muted);
-      font-size: 0.98rem;
+      margin: 0;
     }
 
-    .social-label {
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    .social-strip a {
+    .icon-link {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 8px 12px;
+      width: 40px;
+      height: 40px;
       border-radius: 999px;
       border: 1px solid var(--line);
-      background: #fff;
+      background: rgba(255, 255, 255, 0.72);
       color: var(--ink);
-      font-weight: 600;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
     }
 
-    .social-strip a:hover {
+    .icon-link:hover {
       border-color: var(--accent);
       background: var(--accent-soft);
       text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .icon-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
     }
 
     .post-content,
     .page-content {
       font-size: 1.07rem;
+      color: var(--ink2);
     }
 
     .post-content > *:first-child,
@@ -194,11 +221,12 @@
     .page-content h2,
     .post-content h3,
     .page-content h3 {
-      font-family: "Literata", serif;
+      font-family: "Playfair Display", serif;
       line-height: 1.2;
       letter-spacing: -0.02em;
       margin-top: 2.2rem;
       margin-bottom: 0.75rem;
+      color: var(--ink);
     }
 
     .post-content p,
@@ -221,6 +249,98 @@
       border-radius: 0 12px 12px 0;
     }
 
+    .page-header,
+    .post-header {
+      margin-bottom: 28px;
+    }
+
+    .post-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 5vw, 44px);
+      border-radius: 20px;
+      background: var(--header-ink);
+      border-bottom: 3px solid var(--accent);
+      color: #fff;
+      margin-bottom: 28px;
+    }
+
+    .post-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 20% 50%, rgba(0,122,77,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(0,87,168,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .post-hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .post-kicker {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 5px 12px;
+      border-radius: 4px;
+      border: 1px solid rgba(126, 255, 201, 0.35);
+      color: #7effc9;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .post-hero .post-title {
+      color: #fff;
+      margin-bottom: 18px;
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+    }
+
+    .post-hero .post-meta {
+      color: var(--hero-muted);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.82rem;
+      margin-bottom: 20px;
+    }
+
+    .post-hero .icon-link {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.18);
+      color: #fff;
+    }
+
+    .post-hero .icon-link:hover {
+      background: rgba(126, 255, 201, 0.16);
+      border-color: rgba(126, 255, 201, 0.45);
+    }
+
+    .post-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .post-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .post-body {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: clamp(26px, 4vw, 44px);
+    }
+
     .post-list {
       list-style: none;
       padding: 0;
@@ -233,23 +353,24 @@
       padding: 20px 22px;
       border: 1px solid var(--line);
       border-radius: 16px;
-      background: linear-gradient(180deg, #fff 0%, #fffaf3 100%);
+      background: linear-gradient(180deg, #fff 0%, #fbf8f2 100%);
     }
 
     .post-card h2 {
       margin: 0 0 8px;
       font-size: 1.45rem;
-      font-family: "Literata", serif;
+      font-family: "Playfair Display", serif;
     }
 
     .post-card time {
-      color: var(--muted);
+      color: var(--ink3);
       font-size: 0.95rem;
+      font-family: "JetBrains Mono", monospace;
     }
 
     .post-card p {
       margin: 10px 0 0;
-      color: var(--muted);
+      color: var(--ink3);
     }
 
     .post-comments {
@@ -268,7 +389,7 @@
     }
 
     .footer-note {
-      color: var(--muted);
+      color: var(--ink3);
       max-width: 42rem;
       font-size: 0.96rem;
     }
@@ -283,13 +404,27 @@
       }
 
       .surface {
-        padding: 24px 18px;
-        border-radius: 14px;
+        padding: 0;
       }
 
-      .site-nav a,
-      .social-strip a {
+      .page-shell,
+      .post-body {
+        padding: 22px 18px;
+        border-radius: 16px;
+      }
+
+      .post-hero {
+        padding: 22px 18px;
+        border-radius: 16px;
+      }
+
+      .site-nav a {
         padding: 8px 10px;
+      }
+
+      .post-actions {
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
   </style>
@@ -313,7 +448,9 @@
     <main class="page-main">
       <div class="wrap">
         <div class="surface">
-          {{ content }}
+          <div class="page-shell{% if page.layout == 'post' %} page-shell--post{% endif %}">
+            {{ content }}
+          </div>
         </div>
       </div>
     </main>
