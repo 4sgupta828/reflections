@@ -5,6 +5,13 @@ permalink: /about/
 description: A short note on the systems thinking behind this blog.
 ---
 
+<div class="about-profile">
+  <img src="{{ '/Sandeep.jpeg' | relative_url }}" alt="Sandeep Gupta" />
+  <div class="about-profile-copy">
+    <p><strong>Sandeep Gupta</strong> writes about agentic system design, observability, reliability, and the engineering needed to make AI systems work in production.</p>
+  </div>
+</div>
+
 I write about **agentic system design** with a bias toward production reality.
 
 What interests me most is the gap between a model that looks impressive in isolation and a system that can be trusted inside a messy, changing distributed environment. That gap is where state, uncertainty, observability, tooling, policy, and human judgment all start to matter more than a single prompt or model benchmark.
