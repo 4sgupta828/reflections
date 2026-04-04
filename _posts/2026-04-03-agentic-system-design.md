@@ -111,12 +111,32 @@ In practice, there is rarely one perfect metric. Utility is often a weighted bun
 
 ### 4. Uncertainty Estimation
 
-The system must estimate where it may be wrong or blind — and distinguish between two fundamentally different failure types:
+The system must estimate where it may be wrong or blind — and distinguish between two fundamentally different failure types.
 
-* **Semantic failures:** the model has the capability to succeed but is unreliable — wrong intermediate reasoning, ambiguous retrieval, inconsistent tool use. The signature is occasional success: the agent gets it right sometimes, but fails under repeated or varied attempts at the same task.
-* **Hard failures:** structural gaps — missing tool, stale data, context that was never retrieved, action that has no grounding in real environment state. These fail every time, regardless of how the input is phrased or how many attempts are made.
+**Semantic failures** occur when the model has the capability to succeed but is not deploying it reliably. The signature is inconsistency: run the same input ten times and you get different answers. Vary the phrasing slightly and the agent recovers. Add a better example and it suddenly works. The capability is latent — the policy just isn't activating it dependably.
 
-The distinction matters because the fix is different: semantic failures respond to better prompts, examples, and critics; hard failures require tool repair, retrieval expansion, or guardrails.
+Semantic failures take several forms:
+* **Hallucination** — reasoning that proceeds confidently without being anchored to retrieved evidence; the model fills gaps with plausible-sounding but incorrect inference
+* **Inconsistency** — correct on simple or common phrasings of a task, wrong on edge cases or unfamiliar framings of the same underlying intent
+* **Proxy gaming** — the agent optimizes the measurable signal (test pass rate, CSAT score) rather than the underlying goal, because the proxy was easier to satisfy
+* **Reasoning drift** — in long multi-step tasks, the model loses track of an earlier constraint or decision and contradicts itself by the final step
+
+The fix layer for semantic failures is the policy and its inputs: better prompts, more representative few-shot examples, a critic step, chain-of-thought structure, or routing edge cases to a more capable model.
+
+**Hard failures** are structural. The agent fails every time, regardless of how the input is phrased or how many attempts are made. Rephrasing doesn't help. Better examples don't help. The failure is invariant to prompt changes because the problem isn't in the reasoning — it's in the system beneath it.
+
+Hard failures take several forms:
+* **Missing capability** — no tool exists for what the agent is trying to do; it can reason about the action but cannot execute it
+* **Stale or corrupt data** — the tool exists but returns bad data; the agent acts on a cached state that no longer reflects reality
+* **Retrieval gap** — the relevant document exists in the knowledge base but was never fetched; the agent reasons from an incomplete picture and cannot know what it missed
+* **Context truncation** — the information was present in the prompt but was cut by the context window before the model could use it
+* **Grounding gap** — the agent acts on its internal belief about the environment state rather than on observed tool output, making decisions that are structurally detached from reality
+
+The fix layer for hard failures is the system: add the tool, fix the data pipeline, expand retrieval, enforce freshness validation, or add a guardrail that blocks action when the required context is absent.
+
+**The misclassification trap** is where teams lose weeks. A team that diagnoses a hard failure as semantic will spend cycles rewriting prompts against a problem that prompts cannot fix — the retrieval gap or missing tool will still be there after every iteration. A team that diagnoses a semantic failure as hard will add infrastructure complexity — new tools, new pipelines, new routing layers — when a better example or a critic step would have resolved it. The cost of getting this wrong is high in both directions.
+
+The practical diagnostic: run the same failing input ten times with slight variations in phrasing. If you see any successes, the capability exists — you have a semantic failure. If it fails every time regardless of variation, something structural is missing — you have a hard failure. That single test determines which direction to invest.
 
 Sources of uncertainty include:
 
